@@ -15,8 +15,8 @@ public class ProductService {
         this.productRepository = productRepository;
     }
     @Transactional
-    public Product addProduct(String name, int materialQuantity){
-        Product product = new Product(name, materialQuantity);
+    public Product addProduct(String name){
+        Product product = new Product(name);
         return productRepository.save(product);
     }
     @Transactional()
@@ -30,10 +30,9 @@ public class ProductService {
     }
 
     @Transactional
-    public Product updateProduct(Long id, String name, int materialQuantity){
+    public Product updateProduct(Long id, String name){
         Product product = getProduct(id);
         product.setName(name);
-        product.setMaterialQuantity(materialQuantity);
         return productRepository.save(product);
     }
 

@@ -32,10 +32,9 @@ public class PurchaseService {
     }
 
     @Transactional
-    public Purchase updatePurchase(Long id, LocalDate purchaseDate, BigDecimal cost){
+    public Purchase updatePurchase(Long id, LocalDate purchaseDate){
         Purchase purchase = getPurchase(id);
         purchase.setPurchaseDate(purchaseDate);
-        purchase.setCost(cost);
         return purchaseRepository.save(purchase);
     }
 
@@ -48,5 +47,10 @@ public class PurchaseService {
     @Transactional
     public void deleteAllPurchases(){
         purchaseRepository.deleteAll();
+    }
+
+    @Transactional
+    public List<Purchase> getReport(Long id, String MCname, LocalDate startDate, LocalDate endDate){
+        return purchaseRepository.getReport(id,MCname,startDate,endDate);
     }
 }

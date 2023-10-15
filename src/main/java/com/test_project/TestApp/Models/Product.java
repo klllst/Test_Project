@@ -16,23 +16,11 @@ public class Product {
     @Column
     private String name;
 
-    @Column
-    private int materialQuantity;
-
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "materialComponent_fk")
-    private MaterialComponent materialComponent;
-
-    @OneToMany(mappedBy = "product")
-    private List<Purchase> purchases;
 
     public Product(){
-        this.purchases=new ArrayList<>();
     }
 
-    public Product(String name, int materialQuantity){
+    public Product(String name){
         this.name=name;
-        this.materialQuantity=materialQuantity;
-        this.purchases=new ArrayList<Purchase>();
     }
 }

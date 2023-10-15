@@ -5,18 +5,18 @@ import lombok.Data;
 import javax.persistence.*;
 import java.math.BigDecimal;
 import java.time.LocalDate;
-import java.util.ArrayList;
 
 @Entity
 @Data
 public class Purchase {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int id;
+    private Long id;
+
 
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "materialComponent_fk")
-    private MaterialComponent materialComponent;
+    @JoinColumn(name = "productMC_fk")
+    private ProductMC productMC;
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "product_fk")
@@ -30,8 +30,8 @@ public class Purchase {
 
     public Purchase() {
     }
-    public Purchase(BigDecimal cost, LocalDate purchaseDate){
-        this.cost=cost;
+    public Purchase(LocalDate purchaseDate){
         this.purchaseDate=purchaseDate;
+        this.cost=productMC.getMC().getCost().multiply(BigDecimal.valueOf(productMC.getQuantityMC()));
     }
 }
