@@ -15,6 +15,9 @@ public class Product {
     @Column
     private String name;
 
+    @Column
+    private int quantity;
+
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "materialComponent_fk")
     private MaterialComponent materialComponent;

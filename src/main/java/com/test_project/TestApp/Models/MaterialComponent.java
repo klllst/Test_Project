@@ -3,6 +3,7 @@ package com.test_project.TestApp.Models;
 import lombok.Data;
 
 import javax.persistence.*;
+import java.math.BigDecimal;
 import java.util.List;
 
 @Entity
@@ -14,6 +15,9 @@ public class MaterialComponent {
 
     @Column
     private String name;
+
+    @Column
+    private BigDecimal cost;
 
     @OneToMany(mappedBy = "materialComponent")
     private List<Product> products;
