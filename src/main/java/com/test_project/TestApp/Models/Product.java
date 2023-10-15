@@ -3,6 +3,7 @@ package com.test_project.TestApp.Models;
 import lombok.Data;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -16,7 +17,7 @@ public class Product {
     private String name;
 
     @Column
-    private int quantity;
+    private int materialQuantity;
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "materialComponent_fk")
@@ -25,4 +26,13 @@ public class Product {
     @OneToMany(mappedBy = "product")
     private List<Purchase> purchases;
 
+    public Product(){
+        this.purchases=new ArrayList<>();
+    }
+
+    public Product(String name, int materialQuantity){
+        this.name=name;
+        this.materialQuantity=materialQuantity;
+        this.purchases=new ArrayList<Purchase>();
+    }
 }

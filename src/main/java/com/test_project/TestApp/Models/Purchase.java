@@ -5,6 +5,7 @@ import lombok.Data;
 import javax.persistence.*;
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.util.ArrayList;
 
 @Entity
 @Data
@@ -26,4 +27,11 @@ public class Purchase {
 
     @Column
     private LocalDate purchaseDate;
+
+    public Purchase() {
+    }
+    public Purchase(BigDecimal cost, LocalDate purchaseDate){
+        this.cost=cost;
+        this.purchaseDate=purchaseDate;
+    }
 }
