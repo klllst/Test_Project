@@ -13,7 +13,7 @@ import java.util.List;
 public interface PurchaseRepository extends JpaRepository<Purchase,Long> {
     @Query("SELECT p FROM Purchase p " +
             "JOIN p.productMC productMC " +
-            "JOIN productMC.materialComponent materialComponent " +
+            "JOIN productMC.MC materialComponent " +
             "WHERE productMC.product.id = :productId " +
             "AND LOWER(materialComponent.name) LIKE LOWER(CONCAT('%', :materialComponentName, '%')) " +
             "AND p.purchaseDate BETWEEN :startDate AND :endDate")

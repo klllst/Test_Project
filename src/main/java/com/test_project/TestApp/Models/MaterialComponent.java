@@ -5,7 +5,7 @@ import lombok.Data;
 import javax.persistence.*;
 import java.math.BigDecimal;
 
-
+//Сущность МиКи
 @Entity
 @Data
 public class MaterialComponent {

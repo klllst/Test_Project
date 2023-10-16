@@ -1,6 +1,8 @@
 package com.test_project.TestApp.Service;
 
 import com.test_project.TestApp.Exceptions.PurchaseNotFoundException;
+import com.test_project.TestApp.Models.Product;
+import com.test_project.TestApp.Models.ProductMC;
 import com.test_project.TestApp.Models.Purchase;
 import com.test_project.TestApp.Repositories.PurchaseRepository;
 import org.springframework.stereotype.Service;
@@ -17,8 +19,12 @@ public class PurchaseService {
         this.purchaseRepository = purchaseRepository;
     }
     @Transactional
-    public Purchase addPurchase(LocalDate purchaseDate){
+    public Purchase addPurchase(ProductMC productMC, LocalDate purchaseDate){
         Purchase purchase = new Purchase();
+        purchase.setPurchaseDate(purchaseDate);
+        purchase.setCost(productMC.getMC().getCost().multiply(BigDecimal.valueOf(productMC.getQuantityMC())));
+        purchase.setProduct(productMC.getProduct());
+        purchase.setProductMC(productMC);
         return purchaseRepository.save(purchase);
     }
     @Transactional()

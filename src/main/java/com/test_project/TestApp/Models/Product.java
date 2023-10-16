@@ -3,9 +3,8 @@ package com.test_project.TestApp.Models;
 import lombok.Data;
 
 import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.List;
 
+//Сущность Изделие
 @Entity
 @Data
 public class Product {

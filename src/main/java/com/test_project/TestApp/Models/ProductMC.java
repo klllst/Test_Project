@@ -4,6 +4,7 @@ import lombok.Data;
 
 import javax.persistence.*;
 
+//Сущность Применение МиКов в Изделиях
 @Entity
 @Data
 public class ProductMC {

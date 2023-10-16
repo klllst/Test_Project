@@ -1,11 +1,10 @@
 package com.test_project.TestApp.Service;
 
 import com.test_project.TestApp.Exceptions.ProductMCNotFoundException;
-import com.test_project.TestApp.Exceptions.ProductNotFoundException;
+import com.test_project.TestApp.Models.MaterialComponent;
 import com.test_project.TestApp.Models.Product;
 import com.test_project.TestApp.Models.ProductMC;
 import com.test_project.TestApp.Repositories.ProductMCRepository;
-import com.test_project.TestApp.Repositories.ProductRepository;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
@@ -18,8 +17,10 @@ public class ProductMCService {
         this.productMCRepository = productMCRepository;
     }
     @Transactional
-    public ProductMC addProductMC(int quantityMC){
+    public ProductMC addProductMC(Product product, MaterialComponent MC, int quantityMC){
         ProductMC productMC = new ProductMC(quantityMC);
+        productMC.setProduct(product);
+        productMC.setMC(MC);
         return productMCRepository.save(productMC);
     }
     @Transactional()
