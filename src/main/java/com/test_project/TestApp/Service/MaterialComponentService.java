@@ -3,6 +3,7 @@ package com.test_project.TestApp.Service;
 import com.test_project.TestApp.Exceptions.MaterialComponentNotFoundException;
 import com.test_project.TestApp.Models.MaterialComponent;
 import com.test_project.TestApp.Repositories.MaterialComponentRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
@@ -13,6 +14,7 @@ import java.util.List;
 @Service
 public class MaterialComponentService {
     private final MaterialComponentRepository materialComponentRepository;
+    @Autowired
     public MaterialComponentService(MaterialComponentRepository materialComponentRepository){
         this.materialComponentRepository = materialComponentRepository;
     }

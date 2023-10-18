@@ -5,6 +5,7 @@ import com.test_project.TestApp.Models.MaterialComponent;
 import com.test_project.TestApp.Models.Product;
 import com.test_project.TestApp.Models.ProductMC;
 import com.test_project.TestApp.Repositories.ProductMCRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
@@ -13,6 +14,7 @@ import java.util.List;
 @Service
 public class ProductMCService {
     private final ProductMCRepository productMCRepository;
+    @Autowired
     public ProductMCService(ProductMCRepository productMCRepository){
         this.productMCRepository = productMCRepository;
     }

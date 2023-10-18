@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Report Results</title>
+</head>
+<body>
+<h2>Таблица</h2>
+<table>
+    <thead>
+    <tr>
+        <th>п/п</th>
+        <th>Изделие</th>
+        <th>Материалы и компоненты</th>
+        <th>Начальная цена</th>
+        <th>Конечная цена</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="result, rowStat : ${results}">
+        <td th:text="${rowStat.index + 1}"></td>
+        <td th:text="${result.productName}"></td>
+        <td th:text="${result.MCname}"></td>
+        <td th:text="${result.startCost}"></td>
+        <td th:text="${result.endCost}"></td>
+    </tr>
+    </tbody>
+    <div th:if="${errorMessage}" class="error-message">
+        <p th:text="${errorMessage}"></p>
+    </div>
+</table>
+</body>
+</html>

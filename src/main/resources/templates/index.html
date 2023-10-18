@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Введите данные для получения отчёта</title>
+</head>
+<body>
+<form action="/report" method="post">
+    <label for="product">Изделие:</label>
+    <select id="product" name="productId" required>
+        <option th:each="product : ${products}" th:value="${product.id}" th:text="${product.name}"></option>
+    </select>
+
+    <label for="materialComponent">Материал и комплектующее:</label>
+    <input type="text" id="materialComponent" name="materialComponentName" required>
+
+    <label for="startDate">Начальная дата:</label>
+    <input type="date" id="startDate" name="startDate" required>
+
+    <label for="endDate">Конечная дата:</label>
+    <input type="date" id="endDate" name="endDate" required>
+
+    <button type="submit">Отчёт</button>
+</form>
+</body>
+</html>

@@ -49,22 +49,25 @@ public class DataLoader implements CommandLineRunner {
 
         // Создание применений МиКов в изделиях
         ProductMC productMC1 = productMCService.addProductMC(product1, material1, 5);
-        ProductMC productMC2 = productMCService.addProductMC(product1, material2, 3);
-        ProductMC productMC3 = productMCService.addProductMC(product2, material3, 2);
-        ProductMC productMC4 = productMCService.addProductMC(product2, material4, 4);
-        ProductMC productMC5 = productMCService.addProductMC(product2, material5, 1);
-        ProductMC productMC6 = productMCService.addProductMC(product3, material6, 6);
-        ProductMC productMC7 = productMCService.addProductMC(product3, material7, 7);
+        ProductMC productMC2 = productMCService.addProductMC(product1, material1, 13);
+        ProductMC productMC3 = productMCService.addProductMC(product1, material2, 3);
+        ProductMC productMC4 = productMCService.addProductMC(product2, material3, 2);
+        ProductMC productMC5 = productMCService.addProductMC(product2, material4, 4);
+        ProductMC productMC6 = productMCService.addProductMC(product2, material5, 1);
+        ProductMC productMC7 = productMCService.addProductMC(product3, material6, 6);
+        ProductMC productMC8 = productMCService.addProductMC(product3, material7, 7);
 
         // Создание закупок
-        purchaseService.addPurchase(productMC1, LocalDate.of(2020, 10, 20));
-        purchaseService.addPurchase(productMC1, LocalDate.of(2020, 11, 11) );
-        purchaseService.addPurchase(productMC2, LocalDate.of(2021, 1, 9) );
+        purchaseService.addPurchase(productMC1, LocalDate.of(2020, 11, 11));
+        purchaseService.addPurchase(productMC2, LocalDate.of(2020, 10, 20) );
+        purchaseService.addPurchase(productMC1, LocalDate.of(2020, 12, 20));
+        purchaseService.addPurchase(productMC4, LocalDate.of(2021, 1, 10) );
         purchaseService.addPurchase(productMC3, LocalDate.of(2021, 3, 8) );
         purchaseService.addPurchase(productMC4, LocalDate.of(2021, 5, 21) );
         purchaseService.addPurchase(productMC5, LocalDate.of(2022, 2, 3) );
         purchaseService.addPurchase(productMC6, LocalDate.of(2022, 7, 17) );
         purchaseService.addPurchase(productMC7,LocalDate.of(2023, 6, 12)  );
+        purchaseService.addPurchase(productMC8,LocalDate.of(2023, 6, 12)  );
     }
 }
 

@@ -5,16 +5,19 @@ import com.test_project.TestApp.Models.Product;
 import com.test_project.TestApp.Models.ProductMC;
 import com.test_project.TestApp.Models.Purchase;
 import com.test_project.TestApp.Repositories.PurchaseRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class PurchaseService {
     private final PurchaseRepository purchaseRepository;
+    @Autowired
     public PurchaseService(PurchaseRepository purchaseRepository){
         this.purchaseRepository = purchaseRepository;
     }
@@ -57,6 +60,15 @@ public class PurchaseService {
 
     @Transactional
     public List<Purchase> getReport(Long id, String MCname, LocalDate startDate, LocalDate endDate){
-        return purchaseRepository.getReport(id,MCname,startDate,endDate);
+        return purchaseRepository.getReportForPeriod(id,MCname,startDate,endDate);
+    }
+
+    @Transactional
+    public BigDecimal getStartCost(Long id, Long materialComponentId, LocalDate startDate, LocalDate endDate ){
+        return purchaseRepository.getStartCost(id,materialComponentId,startDate,endDate);
+    }
+    @Transactional
+    public BigDecimal getEndCost(Long id, Long materialComponentId, LocalDate startDate, LocalDate endDate ){
+        return purchaseRepository.getEndCost(id,materialComponentId,startDate,endDate);
     }
 }
